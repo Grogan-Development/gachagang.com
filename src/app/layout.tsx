@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import "./globals.css";
 import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
+import { MedusaCartProvider } from "@/context/MedusaCartContext";
 
 export const metadata: Metadata = {
   title: "RetroVault | 80s & 90s Pop Culture Merch",
@@ -17,9 +18,11 @@ export default function RootLayout({
   return (
     <html lang="en" className="dark">
       <body className="antialiased min-h-screen flex flex-col font-sans">
-        <Header />
-        <main className="flex-1">{children}</main>
-        <Footer />
+        <MedusaCartProvider>
+          <Header />
+          <main className="flex-1">{children}</main>
+          <Footer />
+        </MedusaCartProvider>
       </body>
     </html>
   );
