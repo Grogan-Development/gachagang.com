@@ -9,9 +9,10 @@ import { useMedusaCart } from "@/context/MedusaCartContext";
 
 interface ProductCardProps {
   product: Product;
+  viewMode?: "grid" | "list";
 }
 
-export function ProductCard({ product }: ProductCardProps) {
+export function ProductCard({ product, viewMode = "grid" }: ProductCardProps) {
   const { addToCart } = useMedusaCart();
   const variant = product.variants?.[0];
 

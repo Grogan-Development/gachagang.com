@@ -1,156 +1,134 @@
 import Link from "next/link";
-import { ArrowRight, Zap, Truck, Shield, Star } from "lucide-react";
-import { Button, Text, Badge } from "@/components/retroui";
+import { ArrowRight } from "lucide-react";
 
 export default function Home() {
   return (
-    <div className="noise-bg">
-      {/* Hero Section */}
-      <section className="relative overflow-hidden border-b-4 border-foreground">
-        {/* Background Pattern */}
-        <div className="absolute inset-0 opacity-10">
-          <div className="absolute top-20 left-10 w-32 h-32 bg-primary rounded-full blur-3xl" />
-          <div className="absolute bottom-20 right-10 w-48 h-48 bg-secondary rounded-full blur-3xl" />
-          <div className="absolute top-1/2 left-1/2 w-64 h-64 bg-accent rounded-full blur-3xl" />
+    <div className="min-h-screen bg-background text-foreground">
+      {/* Header */}
+      <header className="border-b border-border">
+        <div className="max-w-7xl mx-auto px-4 py-4 flex items-center justify-between">
+          <Link href="/" className="font-display text-2xl font-bold tracking-wider">
+            GACHA<span className="text-primary">GANG</span>
+          </Link>
+          <nav className="hidden md:flex items-center gap-8">
+            <Link href="/shop" className="font-medium hover:text-primary transition-colors">SHOP</Link>
+            <Link href="/about" className="font-medium hover:text-primary transition-colors">ABOUT</Link>
+            <Link href="#" className="font-medium hover:text-primary transition-colors">CART (0)</Link>
+          </nav>
         </div>
+      </header>
 
-        <div className="container mx-auto px-4 py-16 md:py-24 relative">
-          <div className="max-w-4xl mx-auto text-center">
-            <Badge variant="surface" size="lg" className="mb-6">
-              WELCOME TO RETROVAULT
-            </Badge>
-
-            <Text as="h1" className="mb-6 leading-tight">
-              <span className="block">80s & 90s</span>
-              <span className="text-gradient-neon">POP CULTURE</span>
-              <span className="block">PARADISE</span>
-            </Text>
-
-            <Text
-              as="p"
-              className="text-xl md:text-2xl text-muted-foreground mb-8 max-w-2xl mx-auto"
+      {/* Hero Section */}
+      <section className="relative min-h-[70vh] flex items-center justify-center noise-bg">
+        <div className="max-w-7xl mx-auto px-4 text-center">
+          <h1 className="font-display text-6xl md:text-8xl lg:text-9xl font-black tracking-tight mb-6">
+            <span className="block">80S PUNK</span>
+            <span className="block text-primary">90S GRUNGE</span>
+          </h1>
+          <p className="text-xl md:text-2xl text-muted-foreground mb-8 max-w-2xl mx-auto">
+            Authentic vintage merch. No reproductions. Real collectors know.
+          </p>
+          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <Link
+              href="/shop"
+              className="inline-flex items-center gap-2 px-8 py-4 bg-primary text-primary-foreground font-display font-bold text-lg hover:opacity-90 transition-opacity"
             >
-              Cowboy Bebop. Akira. Godzilla. Back to the Future. The best of the
-              golden era, now in your collection.
-            </Text>
-
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Button size="lg" asChild>
-                <Link href="/shop">
-                  SHOP NOW
-                  <ArrowRight className="ml-2 w-5 h-5" />
-                </Link>
-              </Button>
-              <Button variant="outline" size="lg" asChild>
-                <Link href="/about">LEARN MORE</Link>
-              </Button>
-            </div>
-          </div>
-
-          {/* Floating Elements */}
-          <div className="hidden lg:block absolute top-20 left-10 animate-bounce">
-            <div className="text-6xl">🚀</div>
-          </div>
-          <div
-            className="hidden lg:block absolute bottom-20 right-10 animate-bounce"
-            style={{ animationDelay: "0.5s" }}
-          >
-            <div className="text-6xl">👾</div>
-          </div>
-          <div
-            className="hidden lg:block absolute top-1/2 right-20 animate-bounce"
-            style={{ animationDelay: "1s" }}
-          >
-            <div className="text-6xl">🎮</div>
+              SHOP NOW <ArrowRight className="w-5 h-5" />
+            </Link>
+            <Link
+              href="/about"
+              className="inline-flex items-center gap-2 px-8 py-4 border-2 border-foreground font-display font-bold text-lg hover:bg-foreground hover:text-background transition-colors"
+            >
+              OUR STORY
+            </Link>
           </div>
         </div>
       </section>
 
-      {/* Features Bar */}
-      <section className="bg-card border-b-4 border-foreground">
-        <div className="container mx-auto px-4">
-          <div className="grid grid-cols-2 md:grid-cols-4 divide-x-2 divide-foreground">
+      {/* Categories */}
+      <section className="py-16 border-t border-border">
+        <div className="max-w-7xl mx-auto px-4">
+          <h2 className="font-display text-4xl font-bold mb-8">SHOP BY CATEGORY</h2>
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
             {[
-              {
-                icon: Truck,
-                title: "Free Shipping",
-                desc: "On orders over $75",
-              },
-              {
-                icon: Shield,
-                title: "Authentic",
-                desc: "100% genuine products",
-              },
-              {
-                icon: Star,
-                title: "Quality",
-                desc: "Premium collectibles",
-              },
-              {
-                icon: Zap,
-                title: "Fast Delivery",
-                desc: "2-5 business days",
-              },
-            ].map((feature, i) => (
-              <div key={i} className="py-6 px-4 text-center">
-                <feature.icon className="w-8 h-8 mx-auto mb-2 text-primary" />
-                <Text as="h4" className="font-medium">
-                  {feature.title}
-                </Text>
-                <Text as="p" className="text-sm text-muted-foreground">
-                  {feature.desc}
-                </Text>
+              { name: "APPAREL", href: "/shop?category=apparel" },
+              { name: "COLLECTIBLES", href: "/shop?category=collectibles" },
+              { name: "ACCESSORIES", href: "/shop?category=accessories" },
+              { name: "POSTERS", href: "/shop?category=posters" },
+            ].map((cat) => (
+              <Link
+                key={cat.name}
+                href={cat.href}
+                className="group aspect-square border-2 border-border flex items-center justify-center hover:border-primary transition-colors"
+              >
+                <span className="font-display font-bold text-xl group-hover:text-primary transition-colors">
+                  {cat.name}
+                </span>
+              </Link>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Featured Products */}
+      <section className="py-16 border-t border-border">
+        <div className="max-w-7xl mx-auto px-4">
+          <h2 className="font-display text-4xl font-bold mb-8">NEW ARRIVALS</h2>
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
+            {[1, 2, 3, 4].map((i) => (
+              <div key={i} className="group">
+                <div className="aspect-square bg-muted border-2 border-border mb-4 overflow-hidden">
+                  <div className="w-full h-full flex items-center justify-center text-muted-foreground">
+                    Product {i}
+                  </div>
+                </div>
+                <h3 className="font-display font-bold mb-1">Product Name {i}</h3>
+                <p className="text-muted-foreground">$49.99</p>
               </div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* CTA Section */}
-      <section className="py-16 md:py-24 relative overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-r from-primary/20 via-secondary/20 to-accent/20" />
-        <div className="container mx-auto px-4 relative">
-          <div className="max-w-3xl mx-auto text-center">
-            <Text as="h2" className="mb-4">
-              JOIN RETROVAULT
-            </Text>
-            <Text as="p" className="text-lg text-muted-foreground mb-8">
-              Subscribe to our newsletter for exclusive drops, early access to
-              new products, and special discounts. No spam, just pure nostalgia.
-            </Text>
+      {/* Newsletter */}
+      <section className="py-16 border-t border-border">
+        <div className="max-w-xl mx-auto px-4 text-center">
+          <h2 className="font-display text-3xl font-bold mb-4">JOIN THE GANG</h2>
+          <p className="text-muted-foreground mb-6">
+            Get exclusive drops and early access to new releases.
+          </p>
+          <form className="flex gap-2">
+            <input
+              type="email"
+              placeholder="your@email.com"
+              className="flex-1 px-4 py-3 bg-background border-2 border-border focus:outline-none focus:border-primary"
+            />
+            <button
+              type="submit"
+              className="px-6 py-3 bg-primary text-primary-foreground font-display font-bold hover:opacity-90 transition-opacity"
+            >
+              SUBSCRIBE
+            </button>
+          </form>
+        </div>
+      </section>
 
-            <form className="flex flex-col sm:flex-row gap-4 max-w-md mx-auto">
-              <input
-                type="email"
-                placeholder="Enter your email"
-                className="flex-1 px-4 py-3 rounded border-2 border-foreground shadow-md focus:outline-none focus:shadow-sm bg-background"
-              />
-              <Button type="submit" size="lg">
-                SUBSCRIBE
-              </Button>
-            </form>
-
-            <Text as="p" className="text-sm text-muted-foreground mt-4">
-              By subscribing, you agree to receive marketing emails. You can
-              unsubscribe at any time.
-            </Text>
+      {/* Footer */}
+      <footer className="border-t border-border py-8">
+        <div className="max-w-7xl mx-auto px-4">
+          <div className="flex flex-col md:flex-row justify-between items-center gap-4">
+            <div className="font-display text-xl font-bold">
+              GACHA<span className="text-primary">GANG</span>
+            </div>
+            <div className="flex gap-6 text-sm text-muted-foreground">
+              <a href="#" className="hover:text-primary transition-colors">Instagram</a>
+              <a href="#" className="hover:text-primary transition-colors">Twitter</a>
+              <a href="#" className="hover:text-primary transition-colors">TikTok</a>
+            </div>
+            <div className="text-sm text-muted-foreground">© 2025</div>
           </div>
         </div>
-      </section>
-
-      {/* Quote Section */}
-      <section className="py-16 bg-foreground text-background border-y-4 border-primary">
-        <div className="container mx-auto px-4">
-          <blockquote className="max-w-4xl mx-auto text-center">
-            <Text as="h2" className="italic mb-4">
-              &ldquo;See you space cowboy...&rdquo;
-            </Text>
-            <Text as="p" className="text-lg opacity-80">
-              - Cowboy Bebop
-            </Text>
-          </blockquote>
-        </div>
-      </section>
+      </footer>
     </div>
   );
 }

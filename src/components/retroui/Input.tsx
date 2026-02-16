@@ -13,7 +13,7 @@ export const Input = React.forwardRef<HTMLInputElement, InputProps>(
         type={type}
         placeholder={placeholder}
         className={cn(
-          "px-4 py-2 w-full rounded border-2 border-black shadow-md transition focus:outline-none focus:shadow-sm bg-background text-foreground",
+          "px-4 py-2.5 w-full rounded border-2 border-input bg-background text-foreground font-mono text-sm transition-all duration-200 focus:outline-none focus:border-primary focus:shadow-[0_0_0_1px_var(--primary)] placeholder:text-muted-foreground",
           props["aria-invalid"] &&
             "border-destructive text-destructive shadow-sm shadow-destructive",
           className
